@@ -1,7 +1,8 @@
 /* Kids Quiz Section */
 .kids-quiz-section {
     padding: 70px 20px;
-    background-color: #97f0af;  /* light green soft background */
+    background-color: #97f0af;
+    /* light green soft background */
 }
 
 .kids-quiz-content {
@@ -54,9 +55,15 @@
     transition: 0.3s ease;
 }
 
-.quiz-btn:hover {
+.quiz-btn:hover,
+.quiz-btn:focus-visible {
     background-color: #ffa726;
     transform: scale(1.05);
+}
+
+.quiz-btn:focus-visible {
+    outline: 3px solid #ff9800;
+    outline-offset: 4px;
 }
 
 /* Quiz Image */
