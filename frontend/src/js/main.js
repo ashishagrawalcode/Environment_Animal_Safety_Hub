@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initParticles();
   initFormHandlers();
   initNavbarActiveState();
+  initScrollProgress()
 });
 
 /* ===== NAVBAR ===== */
@@ -54,6 +55,18 @@ function initNavbar() {
       document.body.classList.remove("nav-open");
     }
   });
+}
+
+function initScrollProgress() {
+    const scrollProgress = document.getElementById('scrollProgress');
+    
+    if (!scrollProgress) return;
+    
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        scrollProgress.style.width = scrolled + '%';
+    });
 }
 
 /* ===== NAVBAR ACTIVE STATE ===== */
