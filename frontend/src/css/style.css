@@ -1531,8 +1531,11 @@ body.dark-theme .chat-body {
 body.dark-theme .bot-message {
   background: #1e293b;
   color: #e5e7eb;
+}
 /* ===== CALCULATOR CTA SECTION ===== */
 .calculator-cta-section {
+  display: flex;
+  justify-content: center;
   padding: 80px 0;
   background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
   position: relative;
