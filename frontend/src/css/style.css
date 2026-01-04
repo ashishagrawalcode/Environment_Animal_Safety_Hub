@@ -480,95 +480,6 @@ body {
 
 /* ================================
    Nature Progress Banner (Issue #112)
-================================ */
-
-.eco-awareness-feature {
-  position: relative;
-  z-index: 5;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-/* Banner */
-.eco-awareness-feature .nature-banner {
-  background: linear-gradient(135deg, #2e7d32, #66bb6a);
-  border-radius: 16px;
-  padding: 1.4rem 1.6rem;
-  color: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.eco-awareness-feature h3 {
-  font-size: 1.25rem;
-  margin: 0;
-}
-
-.eco-awareness-feature p {
-  font-size: 0.95rem;
-  margin-top: 6px;
-  opacity: 0.95;
-}
-
-/* Progress Bar */
-.eco-awareness-feature .progress-bar {
-  margin-top: 1rem;
-  width: 100%;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.eco-awareness-feature .progress-fill {
-  height: 100%;
-  width: 0%;
-  background: #c8e6c9;
-  animation: ecoProgress 4s ease-in-out infinite;
-}
-
-@keyframes ecoProgress {
-  0% { width: 0%; }
-  100% { width: 100%; }
-}
-
-/* Awareness Strip */
-.eco-awareness-feature .awareness-strip {
-  margin-top: 1rem;
-  display: flex;
-  gap: 2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  color: #e8f5e9;
-  font-weight: 600;
-}
-
-.eco-awareness-feature .awareness-strip span {
-  animation: ecoScroll 14s linear infinite;
-}
-
-@keyframes ecoScroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .eco-awareness-feature h3 {
-    font-size: 1.05rem;
-  }
-}
-/* Fix overlap: Eco Awareness Banner should sit below hero */
-.eco-awareness-section {
-  position: relative;
-  margin-top: 3rem;
-  z-index: 2;
-}
-
-/* Ensure hero does not overlap next sections */
-.hero-section {
-  overflow: visible;
-=======
 /* ================================
    Eco Challenges Section
 ================================ */
@@ -1212,4 +1123,114 @@ body {
   width: 0%;
   transition: width 0.7s ease;
 
+}
+
+
+
+.carbon-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--input-border);
+  border-radius: 20px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.carbon-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4caf50, #2196f3);
+  transition: width 0.4s ease;
+}
+
+.carbon-preview {
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg-tertiary);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.carbon-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.carbon-badge.low {
+  background: rgba(76, 175, 80, 0.15);
+  color: #2e7d32;
+}
+
+.carbon-badge.medium {
+  background: rgba(255, 152, 0, 0.15);
+  color: #ef6c00;
+}
+
+.carbon-badge.high {
+  background: rgba(244, 67, 54, 0.15);
+  color: #c62828;
+.timeline-section {
+  padding: 80px 20px;
+  background: #f4fbf7;
+}
+
+.timeline-heading {
+  margin: 40px 0 20px;
+  color: #2e7d32;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 20px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #2e7d32;
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  background: #2e7d32;
+  border-radius: 50%;
+}
+
+.timeline-content {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.timeline-content h4 {
+  margin-bottom: 5px;
 }
