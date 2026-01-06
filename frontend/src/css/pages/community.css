@@ -804,3 +804,177 @@ body.page.dashboard {
     margin: 0 10px;
   }
 }
+
+/* =====================
+   GROUPS PAGE
+===================== */
+
+/* Top Bar */
+.groups-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.groups-topbar .input {
+  flex: 1;
+}
+
+.groups-topbar .icon-btn {
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+/* =====================
+   RECOMMENDED CHANNELS
+===================== */
+.recommended-channels {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px;
+}
+
+.channel-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.join-btn {
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--primary-color, #1e7f5c);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.join-btn:hover {
+  background-color: var(--primary-hover, #145c43);
+  transform: scale(1.05);
+}
+
+
+.channel-card:hover {
+  transform: translateY(-4px);
+}
+
+.channel-card span {
+  font-size: 1.8rem;
+}
+
+.channel-card h4 {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+/* =====================
+   CHANNEL FEED
+===================== */
+.channel-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width:100%;
+}
+
+
+.notification-card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.notification-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 6px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.icon-btn.active {
+  color: #e74c3c;
+}
+
+/* =====================
+   RIGHT PANEL
+===================== */
+.my-channel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.view-channel-btn {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+/* =====================
+   CREATE CHANNEL MODAL
+===================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 16px;
+  width: 360px;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  .channel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
