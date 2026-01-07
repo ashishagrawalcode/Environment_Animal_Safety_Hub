@@ -9,6 +9,61 @@
 <link rel="stylesheet" href="../css/pages/kids-learning.css">
 <link rel="stylesheet" href="../css/pages/climate-learning.css">
 
+<style>
+  .map {
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .map-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .map-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .marker {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    border: 2px solid white;
+  }
+
+  .info-box {
+    position: absolute;
+    background: rgba(255,255,255,0.95);
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: none;
+    width: 200px;
+    text-align: left;
+    z-index: 10;
+    pointer-events: none; /* prevents blocking clicks */
+  }
+
+  .info-box h4 {
+    margin: 0 0 5px;
+  }
+
+  .info-box p {
+    margin: 2px 0;
+  }
+</style>
+
 </head>
 
 <body>
@@ -284,6 +339,31 @@
   </div>
 </section>
 
+<section data-aos="fade-up">
+<h1>🌲 Forest Ecosystems</h1>
+<p>Click on the red markers to see the forest details and its animals.</p>
+
+<div class="map-container" id="mapContainer">
+  <img src="../assets/map.png" alt="Forest Ecosystem Map">
+
+  <!-- Markers -->
+    <div class="marker" style="top:35%; left:20%;" data-title="Temperate Forest" data-info="Location: North America<br>Animals: Deer, Wolf, Bear"></div>
+    <div class="marker" style="top:15%; left:70%;" data-title="Boreal Forest" data-info="Location: Northern Europe, Russia<br>Animals: Moose, Lynx, Owl"></div>
+    <div class="marker" style="top:50%; left:45%;" data-title="Savannah" data-info="Location: Africa<br>Animals: Elephant, Lion, Giraffe"></div>
+    <div class="marker" style="top:55%; left:75%;" data-title="Rainforest" data-info="Location: Southeast Asia, South America<br>Animals: Jaguar, Parrot, Monkey"></div>
+    <div class="marker" style="top:75%; left:85%;" data-title="Savannah" data-info="Location: Australia<br>Animals: Kangaroo, Emu, Dingo"></div>
+    <div class="marker" style="top:65%; left:30%;" data-title="Rainforest" data-info="Location: South America (Amazon)<br>Animals: Jaguar, Sloth, Macaw"></div>
+    <div class="marker" style="top:50%; left:25%;" data-title="Rainforest" data-info="Location: Central America<br>Animals: Howler Monkey, Toucan, Tapir"></div>
+    <div class="marker" style="top:65%; left:65%;" data-title="Dry Deciduous Forest" data-info="Location: Madagascar<br>Animals: Lemur, Fossa, Tenrec"></div>
+    <div class="marker" style="top:60%; left:70%;" data-title="Mangrove Forest" data-info="Location: Coastal areas of Southeast Asia<br>Animals: Crocodile, Crab, Kingfisher"></div>
+    <div class="marker" style="top:55%; left:50%;" data-title="Rainforest" data-info="Location: Central Africa<br>Animals: Gorilla, Chimpanzee, African Grey Parrot"></div>
+    <div class="marker" style="top:55%; left:70%;" data-title="Tropical Deciduous Forest" data-info="Location: India, Sri Lanka<br>Animals: Tiger, Indian Elephant, Leopard"></div>
+    <div class="marker" style="top:25%; left:15%;" data-title="Boreal Forest" data-info="Location: Northern Canada, Alaska<br>Animals: Caribou, Lynx, Snowy Owl"></div>
+   <!-- Info Box -->
+  <div class="info-box" id="infoBox"></div>
+</div>
+</section>
+
 </div>
 
 <footer>
@@ -439,14 +519,45 @@ function showBadge() {
 function closeBadge() {
   document.getElementById("badgeModal").classList.remove("show");
 }
+const markers = document.querySelectorAll('.marker');
+const infoBox = document.getElementById('infoBox');
+const mapContainer = document.getElementById('mapContainer');
+
+markers.forEach(marker => {
+  marker.addEventListener('click', function(e){
+    const title = this.dataset.title;
+    const info = this.dataset.info;
+
+    // Show info box
+    infoBox.innerHTML = `<h4>${title}</h4><p>${info}</p>`;
+    infoBox.style.display = 'block';
+
+    // Position relative to map container
+    const containerRect = mapContainer.getBoundingClientRect();
+    const markerRect = marker.getBoundingClientRect();
+
+    const top = marker.offsetTop - infoBox.offsetHeight - 10; // above marker
+    const left = marker.offsetLeft - infoBox.offsetWidth/2 + marker.offsetWidth/2;
+
+    infoBox.style.top = (top < 0 ? marker.offsetTop + marker.offsetHeight + 10 : top) + 'px';
+    infoBox.style.left = Math.max(0, Math.min(left, mapContainer.offsetWidth - infoBox.offsetWidth)) + 'px';
+  });
+});
+
+// Close info box if clicked outside
+document.addEventListener('click', function(e){
+  if(!e.target.classList.contains('marker')){
+    infoBox.style.display = 'none';
+  }
+});
 
   AOS.init({
     duration: 1000,
     once: true,
     easing: 'ease-in-out'
   });
-
 </script>
 
 </body>
 </html>
+
